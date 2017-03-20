@@ -19,9 +19,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtResultCantidad;
     //    cont = getApplicationContext();
     String myCantidad;
+    String myCantidadRetirar;
     String myNombre;
     String miniNombre;
     int miniCantidad;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,32 +38,48 @@ public class MainActivity extends AppCompatActivity {
         txtResultCantidad = (TextView) findViewById(R.id.resultCantidad);
 
         final Banco myBanco = new Banco();
+//        btnRetirar.setVisibility(View.GONE);
+
+
         btnDepositar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 myCantidad = edtCantidad.getText().toString();
                 myBanco.setCantidad(Integer.parseInt(myCantidad));
-
                 myNombre = edtNombre.getText().toString();
                 myBanco.setNombre(myNombre);
 
+
                 miniNombre = myBanco.getNombre();
                 miniCantidad = myBanco.getCantidad();
-//                Toast.makeText(getApplicationContext(), "Ingresa tu Retiro" + miniNombre, Toast.LENGTH_SHORT).show();
 
+
+                int dineroCantidad = Integer.parseInt(String.valueOf(myCantidad));
+                myBanco.cantidadDepositar(dineroCantidad);
+                txtResultCantidad.setText(String.valueOf(dineroCantidad));
                 txtResultNombre.setText(miniNombre);
-                txtResultCantidad.setText((String.valueOf(miniCantidad)));
 
-//            myBanco.cantidadDepositar(miniCantidad);
             }
         });
 
         btnRetirar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Ingresa tu Retiro", Toast.LENGTH_SHORT).show();
+                myCantidadRetirar = edtCantidad.getText().toString();
+                myBanco.cantidadRetirar(Integer.parseInt(myCantidadRetirar));
 
-//                myBanco.cantidadDepositar(miniCantidad);
+
+//                miniNombre = myBanco.getNombre();
+
+
+//            miniCantidad = myBanco.getCantidad();
+//                int cantidadActual = myBanco.getCantidad();
+//                txtResultCantidad.setText((String.valueOf(cantidadActual)));
+
+                Toast.makeText(MainActivity.this, "DEPOSITAR - El saldo que retiro es : " + myCantidadRetirar, Toast.LENGTH_SHORT).show();
+                txtResultCantidad.setText(myCantidadRetirar);
+
             }
         });
     }

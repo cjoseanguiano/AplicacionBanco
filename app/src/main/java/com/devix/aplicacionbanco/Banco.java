@@ -13,7 +13,7 @@ public class Banco {
     Context context;
 
     public Banco(String nombre, int cantidad) {
-        this.nombre = nombre;
+//        this.nombre = nombre;
         this.cantidad = cantidad;
     }
 
@@ -40,15 +40,26 @@ public class Banco {
 
     public void cantidadDepositar(int d) {
         if (d > 0) {
-            Toast.makeText(context, "El saldo de la cuenta es : " + this.cantidad, Toast.LENGTH_SHORT).show();
+            this.cantidad += d;
+//            Toast.makeText(context, "DEPOSITAR - El saldo de la cuenta es : ", Toast.LENGTH_SHORT).show();
         } else {
 
-            Toast.makeText(context, "No realizaste ningun valor : " + this.cantidad, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "No realizaste ningun valor : ", Toast.LENGTH_SHORT).show();
             return;
         }
     }
 
-    public void cantidadRetirar(int d) {
-        this.cantidad = cantidad;
+
+    public void cantidadRetirar(double d) {
+        if (d <= 0) {
+//            Toast.makeText(context, "No existe pesos negativos: ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (this.cantidad < d) {
+//            Toast.makeText(context, "La cantidad a retirar es mayor que el saldo disponible... no se hizo nada", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        this.cantidad -= d;
+//        Toast.makeText(context, "El saldo de la cuenta es ", Toast.LENGTH_SHORT).show();
     }
 }
