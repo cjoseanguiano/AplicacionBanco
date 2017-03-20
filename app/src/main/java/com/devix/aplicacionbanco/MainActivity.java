@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
                 miniCantidad = myBanco.getCantidad();
 //                Toast.makeText(getApplicationContext(), "Ingresa tu Retiro" + miniNombre, Toast.LENGTH_SHORT).show();
 
-//                txtResultNombre.setText(miniNombre);
-//                txtResultCantidad.setText((String.valueOf(miniCantidad)));
+                txtResultNombre.setText(miniNombre);
+                txtResultCantidad.setText((String.valueOf(miniCantidad)));
 
-            myBanco.cantidadDepositar(miniCantidad);
+//            myBanco.cantidadDepositar(miniCantidad);
             }
         });
 
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Ingresa tu Retiro", Toast.LENGTH_SHORT).show();
 
-                myBanco.cantidadDepositar(miniCantidad);
+//                myBanco.cantidadDepositar(miniCantidad);
             }
         });
     }
